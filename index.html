@@ -317,38 +317,32 @@
 		    <li class="button">
 		        <span><i class="fas fa-user"></i> 我的
 				<span style="display: none; color: red;" class="dian">*</span>
-				{volist name="list_content" id="content"}{volist name="list_zan" id="zan"}{volist name="list_reply" id="reply"}
-				   {if $zan.status==1 or $content.status==1 or $reply.status==1}
+				
 				   <script>		
 					    window.onload=function(){
 					       $(".dian").attr('style',' color: red');
 					    };
-				   </script><?php break?>
-				   {/if}{/volist}{/volist}{/volist}</span>
+				   </script></span>
 		        <ul>
 					<a href="../index/mypic.html"><li>我的图片</li></a>
 					
 		            <a href="../Manage/getcontent.html"><li>评论我的
-						{volist name="list_content" id="content"}
-						{if $content.status==1}<span style="color: red;">*</span><?php break?>
-						 {/if}{/volist}
-						</li>
+						<span style="color: red;">*</span>
+						
 					</a>
 					<a href="../Manage/getreply.html">
 							<li>收到的回复
-								{volist name="list_reply" id="reply"}
-								{if $reply.status==1}
 								
-									<span style="color: red;">*</span><?php break?>
-								 {/if}{/volist}
+								
+									<span style="color: red;">*</span>
+								
 							</li>
 					 </a>
 					
 		           <a href="../Manage/getzan.html">
 					<li>收到的赞
-				   {volist name="list_zan" id="zan"}
-				   {if $zan.status==1}
-				   <span style="color: red;">*</span> <?php break?>{/if}{/volist}
+				
+				   <span style="color: red;">*</span>
 				   </li></a>
 				   <a href="../Manage/myorder.html"><li>我的购买</li></a>
 		            <a href="../Manage/myreportnews.html"><li>我的举报</li></a>
@@ -377,14 +371,14 @@
 		           <a href="../index/add.html"><li>图片发布</li></a>
 		        </ul>
 		    </li>
-			{if $_SESSION['username']=='admin'}
+			
 			<li class="button">
 			    <span><i class="fas far fa-user-cog"></i> 后台</span>
 			    <ul>
 			       <a href="../admin/Charts.html"><li>后台管理</li></a>
 			    </ul>
 			</li>
-			{/if}
+			
 		</ul>
 	</div>
 	<div class="neirong">
@@ -432,10 +426,14 @@
 
                     // 加载内容
 					 
-					
+			if(num%2==0)	{	
                     $("#waterfall").append("<li><div ><img src='https://picsum.photos/360/460?random="+num+"' /></div></li>");
 					
-			
+			}
+			else
+			{
+				  $("#waterfall").append("<li><div ><img src='https://picsum.photos/220/230?random="+num+"' /></div></li>");
+			}
 					num++;
                     // 表示加载结束
             
